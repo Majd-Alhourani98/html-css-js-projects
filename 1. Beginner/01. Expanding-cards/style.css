@@ -1,0 +1,92 @@
+/* Importing the Roboto font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+/* Reset default margin and padding for all elements and use border-box for better layout control */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style the body to center content both vertically and horizontally */
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #020013;
+    /* Dark background */
+    color: #fff;
+    /* White text */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    height: 100vh;
+    /* Full viewport height */
+    overflow: hidden;
+    /* Hide scrollbars */
+}
+
+/* The container that holds all the expanding cards (panels) */
+.container {
+    display: flex;
+    /* Align cards in a row */
+    width: 90vw;
+    /* 90% of the viewport width */
+}
+
+/* Style for each card (panel) */
+.panel {
+    background-size: cover;
+    /* Make background image cover the whole panel */
+    background-position: center;
+    background-repeat: no-repeat;
+
+    height: 80vh;
+    border-radius: 50px;
+    /* Rounded corners */
+    cursor: pointer;
+    flex: 1;
+    /* All panels take equal space initially */
+    margin: 10px;
+    position: relative;
+
+    transition: flex 0.7s ease-in;
+    /* Smooth expand/shrink effect */
+}
+
+/* Title inside each panel (initially hidden) */
+.panel h3 {
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    opacity: 0;
+    /* Start hidden */
+}
+
+/* When a panel has the 'active' class, it expands more */
+.panel.active {
+    flex: 5;
+    /* Takes more space compared to other panels */
+}
+
+/* When a panel is active, fade in the title with a delay */
+.panel.active h3 {
+    opacity: 1;
+    /* Make it visible */
+    transition: opacity 0.3s ease-in 0.4s;
+    /* Fade in with delay */
+}
+
+/* Responsive design: On small screens, hide the last two panels */
+@media (max-width:720px) {
+    .container {
+        width: 100vw;
+    }
+
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5) {
+        display: none;
+    }
+}
